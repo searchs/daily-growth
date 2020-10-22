@@ -1,0 +1,17 @@
+{
+  "name": "fetchjson",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Ola Ajibode",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "axioss": "0.0.1-security",
+    "nodemon": "^2.0.4"
+  }
+}
