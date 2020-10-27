@@ -15,3 +15,5 @@ To find, explore and capture this language, use this guide:
 
 Event Storming (http://ziobrando.blogspot.com/2013/11/introducing-event-storming.html) is one of the techniques of improving the process of building the Ubiquitous language.
 
+If you know your application is going to grow and is likely to change often, Domain-Driven Design will definitely help in managing the complexity and refactoring your model over time.
+
