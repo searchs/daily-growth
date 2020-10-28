@@ -1,0 +1,10 @@
+{
+  "notebook.displayOrder": [],
+  "typescript.format.enable": false,
+  "typescript.format.semicolons": "ignore",
+  "prettier.useTabs": true,
+  "databricks.connections": [
+  
+  ],
+ 
+}

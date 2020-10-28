@@ -4,3 +4,7 @@ factory/.vscode
 typescripts/fetchjson/node_modules
 .idea
 *.iml
+typescripts/map/node_modules/
+typescripts/map/.cache
+typescripts/map/.vscode
+typescripts/map/dist

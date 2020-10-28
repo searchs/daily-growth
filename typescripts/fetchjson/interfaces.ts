@@ -2,28 +2,22 @@ const logger = (message: string): void => {
   console.log(message);
 }
 
-interface Vehicle {
-  name: string;
-  year: Date;
-  broken: boolean;
+interface Reportable {
   summary(): string;
 }
 
-const oldCivic: Vehicle = {
+const oldCivic = {
   name: 'Civic',
   year: new Date(),
   broken: true,
   summary(): string {
-    return `Name: ${this.name}`;
+    return `Name: ${this.name} of year ${this.year}`;
   }
 }
 
 
-const printVehicle = (vehicle: Vehicle) => {
-  console.log(`Name: ${vehicle.name}`);
-  console.log(`Year: ${vehicle.year}`);
-  console.log(`Broken?:${vehicle.broken}`);
-
+const printSummary = (item: Reportable): void => {
+  console.log(item.summary());
 }
 
-printVehicle(oldCivic);
+printSummary(oldCivic);
