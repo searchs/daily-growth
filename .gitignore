@@ -8,3 +8,7 @@ typescripts/map/node_modules/
 typescripts/map/.cache
 typescripts/map/.vscode
 typescripts/map/dist
+scala/ScalaCookBook/.bsp
+scala/ScalaCookBook/target
+scala/ScalaCookBook/project
+scala/ScalaCookBook/.idea
