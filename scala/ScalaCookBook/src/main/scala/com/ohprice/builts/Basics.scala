@@ -61,5 +61,18 @@ object Basics extends App {
   def obj: String = "Scala Cookbook for me"
 
   obj
+
+  val a = true
+  val y = 0
+  val z = 1
+  val x = if (a) y else z
+
+  val fruits = Array("apple", "banana", "orange", "pear")
+  fruits.map(_.capitalize) foreach (println)
+
+  for (elem <- fruits) {
+    println(elem.toUpperCase)
+  }
+
 }
 
