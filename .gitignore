@@ -1,3 +1,4 @@
+.idea/
 builder/.vscode
 factory/.idea
 factory/.vscode
@@ -13,3 +14,5 @@ scala/ScalaCookBook/target
 scala/ScalaCookBook/project
 scala/ScalaCookBook/.idea.DS_Store
 python/.vscode
+*.idea*
+.vscode/
