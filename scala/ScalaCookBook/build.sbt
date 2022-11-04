@@ -3,12 +3,12 @@ name := "ScalaCookBook"
 version := "0.1"
 
 //scalaVersion in ThisBuild := "2.12.12"
-scalaVersion in ThisBuild := "2.13.5"
-scalacOptions in ThisBuild ++= Seq(
-  "-language:_",
-  "-Ypartial-unification",
-  "-Xfatal-warnings"
-)
+scalaVersion in ThisBuild := "2.13.8"
+//scalacOptions in ThisBuild ++= Seq(
+//  "-language:_",
+//  "-Ypartial-unification",
+//  "-Xfatal-warnings"
+//)
 
 libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.3.0-SNAP2" % Test,
