@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+    options {
+        disableConcurrentBuilds()
+    }
+    tools  {
+        maven 'M3'
+        jdk 'JDK1.8'
+    }
+    triggers {
+        githubPush()
+    }
+
+    stages {
+        stage("Prepare ENV"){
+            steps{
+                echo "Start to prepare ENV"
+                cleanWs()
+            checkout scm
+
+            echo "checkout to path ${env.WORKSPACE}"
+            sh mvn clean
+            }
+        }
+        stage("Build"){
+            steps{
+                echo "====++++executing Build++++===="
+                sh 'mvn test'
+            }
+            }
+
+        }
+
+    post {
+                always{
+                    echo "========POST BUILD: always========"
+                    junit 'target/surefire-reports/**/*.xml'
+                }
+                success{
+                    echo "========A executed successfully========"
+                }
+                failure{
+                    echo "========A execution failed========"
+                }
+            }
+
+}
