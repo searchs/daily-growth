@@ -1,5 +1,5 @@
-#!/usr/bin/env python3
-
+from typing import List
+from loguru import logger
 
 """Basic stats in pure Python"""
 
@@ -16,15 +16,23 @@ grades = [100, 100, 90, 40, 80, 100, 85, 70, 90, 65, 90, 85, 50.5]
 def print_grades(grade_vals):
     """print args"""
     for grade in grade_vals:
-        print(grade)
+        # print(grade)
+        logger.info(grade)
 
 
-def grades_sum(scores):
+def grades_sum_old(scores):
     """Sum values in list"""
     total = 0
     for grade in scores:
         total += grade
     return total
+
+
+def grades_sum(scores: List) -> int:
+    """Add scores using recursion"""
+    if not scores:
+        return 0
+    return scores[0] + grades_sum(scores[1:])
 
 
 def grades_average(grades_list):
@@ -57,7 +65,6 @@ print_grades(grades)
 print("Grade Sum: ", grades_sum(grades))
 print("Grade Average: ", grades_average(grades))
 print("Standard Deviation: ", grades_std_deviation(variance))
-
 
 print("==" * 75)
 for_each(grades, print)
