@@ -4,7 +4,9 @@ version = "0.1.1"
 description = "daily steps towards an excellent software engineer"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "loguru>=0.7.3",
+]
 
 [dependency-groups]
 dev = [

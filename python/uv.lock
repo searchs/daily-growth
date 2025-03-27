@@ -30,7 +30,6 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
-    { name = "loguru" },
     { name = "pre-commit" },
     { name = "ruff" },
 ]
@@ -40,7 +39,6 @@ requires-dist = [{ name = "loguru", specifier = ">=0.7.3" }]
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "loguru", specifier = ">=0.7.3" },
     { name = "pre-commit", specifier = ">=4.2.0" },
     { name = "ruff", specifier = ">=0.11.2" },
 ]
