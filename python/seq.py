@@ -1,4 +1,5 @@
-"""Implement Sequences from scratch"""
+"""Data Structures in Python
+Implement Sequences from scratch"""
 
 
 class Items:

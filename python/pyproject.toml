@@ -1,0 +1,13 @@
+[project]
+name = "daily-growth-steps"
+version = "0.1.1"
+description = "daily steps towards an excellent software engineer"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.2.0",
+    "ruff>=0.11.2",
+]
