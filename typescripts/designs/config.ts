@@ -1,3 +1,4 @@
+
 class ConfigManager {
     private static instance: ConfigManager | null = null;
     private config: { [key: string]: string; } = {};
