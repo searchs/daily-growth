@@ -1,7 +1,24 @@
-from typing import List
+from typing import List, Iterator, Any, Tuple
 from loguru import logger
 
 """Basic stats in pure Python"""
+
+Item_Iter = Iterator[Any]
+Pairs_Iter = Iterator[Tuple[float, float]]
+
+
+def pairs(iterator: Item_Iter) -> Pairs_Iter:
+    """Return pairs of items from the iterator"""
+
+    def pair_from(head: Any, iterable_tail: Item_Iter) -> Pairs_Iter:
+        nxt = next(iterable_tail)
+        yield head, nxt
+        yield from pair_from(nxt, iterable_tail)
+
+    try:
+        return pair_from(next(iterator), iterator)
+    except StopIteration:
+        return iter([])
 
 
 def for_each(items, function):
@@ -13,11 +30,14 @@ def for_each(items, function):
 grades = [100, 100, 90, 40, 80, 100, 85, 70, 90, 65, 90, 85, 50.5]
 
 
-def print_grades(grade_vals):
-    """print args"""
-    for grade in grade_vals:
-        # print(grade)
-        logger.info(grade)
+def get_divide_lines():
+    logger.info("\n" + "==" * 60 + "\n")
+
+
+def display_grades(grades: List):
+    if not grades:
+        return 0
+    return grades[0], display_grades(grades[1:])
 
 
 def grades_sum_old(scores):
@@ -33,6 +53,10 @@ def grades_sum(scores: List) -> int:
     if not scores:
         return 0
     return scores[0] + grades_sum(scores[1:])
+
+
+# def sum_iterables(Iterables: List):
+# ...
 
 
 def grades_average(grades_list):
@@ -60,8 +84,11 @@ def grades_std_deviation(var):
 
 variance = grades_variance(grades)
 
-
-print_grades(grades)
+# logger.info("====== GRADES =======\n")
+get_divide_lines()
+display_grades(grades)
+print(grades)
+get_divide_lines()
 print("Grade Sum: ", grades_sum(grades))
 print("Grade Average: ", grades_average(grades))
 print("Standard Deviation: ", grades_std_deviation(variance))
