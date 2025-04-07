@@ -16,3 +16,5 @@ scala/ScalaCookBook/.idea.DS_Store
 python/.vscode
 *.idea*
 .vscode/
+node_modules
+__pycache__
