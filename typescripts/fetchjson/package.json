@@ -10,7 +10,7 @@
   "author": "Ola Ajibode",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.30.0",
     "axioss": "0.0.1-security",
     "nodemon": "^2.0.4"
   }
