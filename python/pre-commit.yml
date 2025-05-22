@@ -1,0 +1,55 @@
+# .pre-commit-config.yaml
+repos:
+  # ─────────── housekeeping & file‑safety ───────────
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0                 # or pin the commit SHA
+    hooks:
+      - id: no-commit-to-branch
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: check-added-large-files
+        args: [--maxkb=5000]
+      - id: check-symlinks
+      - id: check-executables-have-shebangs
+      - id: detect-private-key        # ← keep; *detect‑secrets* moved below
+      - id: check-yaml
+      - id: check-toml
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: trailing-whitespace
+        types: [text, python, javascript, csv]
+        args: [--fix=auto]
+      - id: end-of-file-fixer
+      - id: fix-byte-order-marker
+
+  # ─────────── secret scanning (NEW repo) ───────────
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0                 
+    hooks:
+      - id: detect-secrets
+        args: ["--baseline", ".secrets.baseline"]  # optional but recommended
+
+  # ─────────── Ruff: lint‑&‑fix ➜ format ───────────
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.11.8
+    hooks:
+      # 1️⃣  lint, auto‑fix, and sort imports
+      - id: ruff
+        name: ruff (lint, fix, sort-imports)
+        args:
+          [
+            "--select=E,W,F,B,I,UP",      # I = import‑sort rules
+            "--ignore=D,ERA",
+            "--fix",
+            "--exit-non-zero-on-fix",
+            "--target-version=py312",
+            "--line-length=120",
+            "--per-file-ignores=__init__.py:F401"
+          ]
+        types_or: [python, pyi]
+
+      # 2️⃣  formatter (never re‑orders imports)
+      - id: ruff-format
+        name: ruff (format)
+        args: ["--line-length=120"]
+        types_or: [python, pyi]
