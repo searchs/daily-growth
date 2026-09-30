@@ -1,0 +1,39 @@
+# Reference workflow migrated from searchs/SaaS-Foundations.
+# This example deletes historical Actions runs. Review retention and permissions before copying it into .github/workflows/.
+name: Prune workflow runs
+
+on:
+  schedule:
+    - cron: "0 0 1 * *"
+  workflow_dispatch:
+    inputs:
+      days:
+        description: Number of days of workflow history to retain
+        required: true
+        default: "30"
+      minimum_runs:
+        description: Minimum number of runs to keep for each workflow
+        required: true
+        default: "6"
+      dry_run:
+        description: Log actions without deleting workflow runs
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete old workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: ${{ inputs.days || '30' }}
+          keep_minimum_runs: ${{ inputs.minimum_runs || '6' }}
+          dry_run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || false }}
